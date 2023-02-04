@@ -8,11 +8,12 @@ import {isValidCombination, determineCombination} from "./check-combination";
 export const CalculateRank: {[K in Combination]: (cards: Card[]) => number} = {
   leaf: (cards) => _.first(cards.map((card) => CardValue[card]), 0),
   pair: (cards) => _.first(cards.map((card) => CardValue[card]), 0),
-  triad:  (cards) => _.first(cards.map((card) => CardValue[card]), 0),
-  full: (cards) => ((values) => _.isSplittedGroupSame(values, 3) ? _.first(values, 0) : _.last(values, 0))(cards.map((card) => CardValue[card]).sort()),
-  straight: (cards) => _.last(cards.map((card) => CardValue[card]).sort(), 0),
-  squareBombs: (cards) => _.first(cards.map((card) => CardValue[card]), 0) * 100,
-  straightBombs: (cards) => _.last(cards.map((card) => CardValue[card]).sort(), 0) * 100,
+  consecutivePairs: (cards) => _.last(cards.map((card) => CardValue[card]), 0),
+  triple:  (cards) => _.first(cards.map((card) => CardValue[card]), 0),
+  fullHouse: (cards) => ((values) => _.isSplittedGroupSame(values, 3) ? _.first(values, 0) : _.last(values, 0))(cards.map((card) => CardValue[card]).sort((a, b) => a - b)),
+  straight: (cards) => _.last(cards.map((card) => CardValue[card]).sort((a, b) => a - b), 0),
+  squareBomb: (cards) => _.first(cards.map((card) => CardValue[card]), 0) * 100,
+  straightBomb: (cards) => _.last(cards.map((card) => CardValue[card]).sort((a, b) => a - b), 0) * 100,
 };
 
 export const activatePheonix = (cards: Card[]): Card[] => {

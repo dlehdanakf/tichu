@@ -1,1 +1,9 @@
-export type Combination = "leaf" | "pair" | "triad" | "full" | "straight" | "squareBombs" | "straightBombs";
+export type Combination =
+  | "leaf"
+  | "pair"
+  | "consecutivePairs"
+  | "triple"
+  | "fullHouse"
+  | "straight"
+  | "squareBomb"
+  | "straightBomb";

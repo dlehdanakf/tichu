@@ -34,6 +34,7 @@ describe("Validate cards combination correctly", () => {
     ["♠2", "♣2", "♠3", "♥3", "♠4", "♥4"],
     ["♣2", SpecialCard.Dog],
     ["♠4", "♠5", "♠6"],
+    ["♣9", "♥J", "♥Q"],
     ["♠8", "♣8", "♥8", "♠9", "♥9", "♦9"],
     ["1", "♣2", "♥3", "♥4"],
     ["♠8", "♠8", SpecialCard.Dragon],
