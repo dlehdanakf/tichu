@@ -1,0 +1,16 @@
+{
+  "name": "@package/core",
+  "packageManager": "yarn@3.4.1",
+  "main": "./lib/main.ts",
+  "scripts": {
+    "start": "vitest --ui"
+  },
+  "peerDependencies": {
+    "typescript": "*"
+  },
+  "devDependencies": {
+    "@vitest/ui": "^0.28.4",
+    "vite": "^4.1.1",
+    "vitest": "^0.28.4"
+  }
+}
