@@ -1,4 +1,4 @@
-import {activatePheonix, CalculateRank, Card, determineCombination, isValidCombination} from "@package/core";
+import {activatePheonix, calculateRank, Card, determineCombination, isValidCombination} from "@package/core";
 import {isSameLength, notNullish} from "./utils";
 
 export const battle = (defender: Card[], challenger: Card[]) => {
@@ -11,9 +11,9 @@ export const battle = (defender: Card[], challenger: Card[]) => {
       const defenderCombination = determineCombination(defender);
       const challengerCombination = determineCombination(pheonixActivatedChallenger);
 
-      const defenderRank = notNullish(CalculateRank[defenderCombination](defender), 0.5);
+      const defenderRank = notNullish(calculateRank(defenderCombination, defender), 0.5);
       const challengerRank = notNullish(
-        CalculateRank[challengerCombination](pheonixActivatedChallenger),
+        calculateRank(challengerCombination, pheonixActivatedChallenger),
         defenderRank + 0.5,
       );
 
