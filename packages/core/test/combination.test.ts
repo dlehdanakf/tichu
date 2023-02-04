@@ -1,4 +1,4 @@
-import {isValidCombination, SpecialCard} from "@package/core";
+import {Combination, isValidCombination, determineCombination, SpecialCard} from "@package/core";
 import type {Card} from "@package/core";
 
 describe("Validate cards combination correctly", () => {
@@ -41,6 +41,7 @@ describe("Validate cards combination correctly", () => {
     ["♠4", "♠5", "♠6", SpecialCard.Dragon],
     ["♠4", "♠5", "♠6", SpecialCard.Dog],
     ["♠9", "♠J", "♠Q", "♠K"],
+    ["♣2", "♦2", "♠7", "♥7", "♣8"],
     ["♠9", "♠J", "♠Q", "♠K", SpecialCard.Dragon],
     ["♠4", "♠6", "♠7", "♣8", "♠9"],
     ["♠6", "♠7", "♦8", "♠9", "♠Q"],
@@ -55,6 +56,53 @@ describe("Validate cards combination correctly", () => {
   invalidCombination.forEach((combination) => {
     it(`[${combination.join(", ")}] is invalid combination`, () => {
       expect(isValidCombination(combination)).toEqual(false);
+    });
+  });
+});
+
+describe("Determine cards combination correctly", () => {
+  const combinations: {[K in Combination]: Card[][]} = {
+    leaf: [["1"], [SpecialCard.Dog], [SpecialCard.Pheonix], [SpecialCard.Dragon], ["♠3"], ["♥Q"]],
+    pair: [
+      ["♠2", "♣2"],
+      ["♠A", "♣A"],
+    ],
+    consecutivePairs: [
+      ["♠2", "♣2", "♥3", "♦3"],
+      ["♠9", "♥9", "♦J", "♠J"],
+      ["♥Q", "♦Q", "♠K", "♥K"],
+    ],
+    triple: [
+      ["♠3", "♣3", "♥3"],
+      ["♣A", "♣A", "♦A"],
+    ],
+    fullHouse: [
+      ["♣A", "♥A", "♠A", "♦4", "♦4"],
+      ["♣2", "♦2", "♠7", "♥7", "♣7"],
+      ["♣2", "♠7", "♦2", "♥7", "♣7"],
+    ],
+    straight: [
+      ["1", "♣2", "♥3", "♥4", "♦5"],
+      ["♣2", "♥3", "♥4", "♦5", "♠6"],
+      ["♣2", "♥3", "♥4", "♦5", "♠6", "♦7"],
+      ["♥8", "♠9", "♣J", "♠Q", "♣K"],
+    ],
+    squareBomb: [
+      ["♠8", "♣8", "♥8", "♦8"],
+      ["♦A", "♥A", "♠A", "♣A"],
+    ],
+    straightBomb: [
+      ["♣2", "♣3", "♣4", "♣5", "♣6"],
+      ["♦2", "♦3", "♦4", "♦5", "♦6", "♦7"],
+      ["♥8", "♥9", "♥J", "♥Q", "♥K"],
+    ],
+  };
+
+  Object.entries(combinations).forEach(([name, combinations]) => {
+    combinations.forEach((combination) => {
+      it(`[${combination.join(", ")}] must be '${name}'`, () => {
+        expect(determineCombination(combination)).toEqual(name);
+      });
     });
   });
 });
