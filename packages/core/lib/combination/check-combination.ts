@@ -24,7 +24,7 @@ export const isValidCombination = (cards: Card[], withoutBomb = false): boolean 
   return combinations.map((key) => CheckCombination[key](cards)).some((result) => result === true);
 };
 
-export const determineCombination = (cards: Card[], withoutBomb = false): Combination => {
+export const determineCombination = (cards: Card[], withoutBomb = false): Combination | undefined => {
   const combinations: Combination[] = withoutBomb ? NormalCombinations : [...BombCombinations, ...NormalCombinations];
 
   const results = combinations.map((key) => CheckCombination[key](cards));
