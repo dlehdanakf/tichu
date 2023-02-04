@@ -1,31 +1,29 @@
-import {CardValue, Utils} from "@package/core";
+import {CardValue, _} from "@package/core";
 import type {Card} from "@package/core";
 import type {Combination} from "./types";
-import {PHEONIX, PheonixReplaceableCards} from "@package/core";
+import {SpecialCard, PheonixReplaceableCards} from "@package/core";
 import {isValidCombination, determineCombination} from "./check-combination";
-
-const {first, last, isSplittedGroupSame} = Utils;
 
 // prettier-ignore
 export const CalculateRank: {[K in Combination]: (cards: Card[]) => number} = {
-  leaf: (cards) => first(cards.map((card) => CardValue[card]), 0),
-  pair: (cards) => first(cards.map((card) => CardValue[card]), 0),
-  triad:  (cards) => first(cards.map((card) => CardValue[card]), 0),
-  full: (cards) => ((values) => isSplittedGroupSame(values, 3) ? first(values, 0) : last(values, 0))(cards.map((card) => CardValue[card]).sort()),
-  straight: (cards) => last(cards.map((card) => CardValue[card]).sort(), 0),
-  squareBombs: (cards) => first(cards.map((card) => CardValue[card]), 0) * 100,
-  straightBombs: (cards) => last(cards.map((card) => CardValue[card]).sort(), 0) * 100,
+  leaf: (cards) => _.first(cards.map((card) => CardValue[card]), 0),
+  pair: (cards) => _.first(cards.map((card) => CardValue[card]), 0),
+  triad:  (cards) => _.first(cards.map((card) => CardValue[card]), 0),
+  full: (cards) => ((values) => _.isSplittedGroupSame(values, 3) ? _.first(values, 0) : _.last(values, 0))(cards.map((card) => CardValue[card]).sort()),
+  straight: (cards) => _.last(cards.map((card) => CardValue[card]).sort(), 0),
+  squareBombs: (cards) => _.first(cards.map((card) => CardValue[card]), 0) * 100,
+  straightBombs: (cards) => _.last(cards.map((card) => CardValue[card]).sort(), 0) * 100,
 };
 
 export const activatePheonix = (cards: Card[]): Card[] => {
-  if (cards.includes(PHEONIX) === false) {
+  if (cards.includes(SpecialCard.Pheonix) === false) {
     return cards;
   }
 
-  const withoutPheonixCard = cards.filter((card) => card !== PHEONIX);
+  const withoutPheonixCard = cards.filter((card) => card !== SpecialCard.Pheonix);
   const replaceableCards = PheonixReplaceableCards.filter((card) => cards.includes(card) === false);
 
-  return last(
+  return _.last(
     replaceableCards
       .map((card) => [...withoutPheonixCard, card])
       .filter((cards) => isValidCombination(cards, true))

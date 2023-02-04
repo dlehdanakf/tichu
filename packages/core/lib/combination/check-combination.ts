@@ -1,18 +1,16 @@
-import {CardValue, CardShape, Utils} from "@package/core";
+import {CardValue, CardShape, _} from "@package/core";
 import type {Card} from "@package/core";
 import type {Combination} from "./types";
 
-const {isLength, isAllSame, isSplittedGroupSame, isLengthAtLeast, isIncreasing} = Utils;
-
 // prettier-ignore
 export const CheckCombination: {[K in Combination]: (cards: Card[]) => boolean} = {
-  leaf: (cards) => isLength(cards, 1),
-  pair: (cards) => isLength(cards, 2) && isAllSame(cards.map((card) => CardValue[card])),
-  triad: (cards) => isLength(cards, 3) && isAllSame(cards.map((card) => CardValue[card])),
-  full: (cards) => isLength(cards, 5) && (isSplittedGroupSame(cards.map((card) => CardValue[card]).sort(), 3) || isSplittedGroupSame(cards.map((card) => CardValue[card]).sort(), 2)),
-  straight: (cards) => isLengthAtLeast(cards, 5) && isIncreasing(cards.map((card) => CardValue[card]).sort()),
-  squareBombs: (cards) => isLength(cards, 4) && isAllSame(cards.map((card) => CardValue[card])),
-  straightBombs: (cards) => isLengthAtLeast(cards, 5) && isIncreasing(cards.map((card) => CardValue[card]).sort()) && isAllSame(cards.map((card) => CardShape[card])),
+  leaf: (cards) => _.isLength(cards, 1),
+  pair: (cards) => _.isLength(cards, 2) && _.isAllSame(cards.map((card) => CardValue[card])),
+  triad: (cards) => _.isLength(cards, 3) && _.isAllSame(cards.map((card) => CardValue[card])),
+  full: (cards) => _.isLength(cards, 5) && (_.isSplittedGroupSame(cards.map((card) => CardValue[card]).sort(), 3) || _.isSplittedGroupSame(cards.map((card) => CardValue[card]).sort(), 2)),
+  straight: (cards) => _.isLengthAtLeast(cards, 5) && _.isIncreasing(cards.map((card) => CardValue[card]).sort()),
+  squareBombs: (cards) => _.isLength(cards, 4) && _.isAllSame(cards.map((card) => CardValue[card])),
+  straightBombs: (cards) => _.isLengthAtLeast(cards, 5) && _.isIncreasing(cards.map((card) => CardValue[card]).sort()) && _.isAllSame(cards.map((card) => CardShape[card])),
 };
 
 export const isValidCombination = (cards: Card[], withoutBomb = false): boolean => {

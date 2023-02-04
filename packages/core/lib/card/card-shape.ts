@@ -1,5 +1,5 @@
 import type {Card, Shape} from "./types";
-import {DOG, PHEONIX, DRAGON} from "./special-cards";
+import {SpecialCard} from "./special-cards";
 
 export const CardShape: {[K in Card]: Shape | ""} = {
   "♠2": "♠",
@@ -14,18 +14,18 @@ export const CardShape: {[K in Card]: Shape | ""} = {
   "♠Q": "♠",
   "♠K": "♠",
   "♠A": "♠",
-  "♥2": "♠",
-  "♥3": "♠",
-  "♥4": "♠",
-  "♥5": "♠",
-  "♥6": "♠",
-  "♥7": "♠",
-  "♥8": "♠",
-  "♥9": "♠",
-  "♥J": "♠",
-  "♥Q": "♠",
-  "♥K": "♠",
-  "♥A": "♠",
+  "♥2": "♥",
+  "♥3": "♥",
+  "♥4": "♥",
+  "♥5": "♥",
+  "♥6": "♥",
+  "♥7": "♥",
+  "♥8": "♥",
+  "♥9": "♥",
+  "♥J": "♥",
+  "♥Q": "♥",
+  "♥K": "♥",
+  "♥A": "♥",
   "♦2": "♦",
   "♦3": "♦",
   "♦4": "♦",
@@ -51,7 +51,7 @@ export const CardShape: {[K in Card]: Shape | ""} = {
   "♣K": "♣",
   "♣A": "♣",
   "1": "",
-  [DOG]: "",
-  [PHEONIX]: "",
-  [DRAGON]: "",
+  [SpecialCard.Dog]: "",
+  [SpecialCard.Pheonix]: "",
+  [SpecialCard.Dragon]: "",
 };

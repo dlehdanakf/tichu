@@ -1,5 +1,5 @@
 import type {Card} from "./types";
-import {PHEONIX, DOG, DRAGON} from "./special-cards";
+import {SpecialCard} from "./special-cards";
 
 export const CardValue: {[K in Card]: number} = {
   "♠2": 2,
@@ -51,7 +51,7 @@ export const CardValue: {[K in Card]: number} = {
   "♣K": 12,
   "♣A": 13,
   "1": 1,
-  [DOG]: 0,
-  [PHEONIX]: NaN,
-  [DRAGON]: Infinity,
+  [SpecialCard.Dog]: 0,
+  [SpecialCard.Pheonix]: NaN,
+  [SpecialCard.Dragon]: Infinity,
 };
