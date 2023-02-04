@@ -3,7 +3,7 @@ import type {Card} from "@package/core";
 import type {Combination} from "./types";
 
 // prettier-ignore
-export const CheckCombination: {[K in Combination]: (cards: Card[]) => boolean} = {
+const CheckCombination: {[K in Combination]: (cards: Card[]) => boolean} = {
   leaf: (cards) => _.isLength(cards, 1),
   pair: (cards) => _.isLength(cards, 2) && _.isAllSame(cards.map((card) => CardValue[card])),
   triad: (cards) => _.isLength(cards, 3) && _.isAllSame(cards.map((card) => CardValue[card])),
