@@ -1,7 +1,7 @@
 {
   "name": "@package/core",
   "packageManager": "yarn@3.4.1",
-  "main": "./lib/main.ts",
+  "main": "./lib/index.ts",
   "scripts": {
     "start": "vitest --ui"
   },
