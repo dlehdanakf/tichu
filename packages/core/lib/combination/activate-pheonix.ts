@@ -14,8 +14,7 @@ export const activatePheonix = (cards: Card[]): Card[] => {
   return last(
     PheonixReplaceableCards.map((card) => [...withoutPheonixCard, card])
       .filter((cards) => isValidCombination(cards, true))
-      .map((cards) => ({cards, combination: determineCombination(cards, true)}))
-      .map(({cards, combination}) => ({cards, combination, rank: calculateRank(combination, cards)}))
+      .map((cards) => ({cards, rank: calculateRank(determineCombination(cards, true), cards)}))
       .sort(({rank: a}, {rank: b}) => a - b)
       .map(({cards}) => cards),
     cards,
