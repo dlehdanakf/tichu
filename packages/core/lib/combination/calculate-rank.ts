@@ -15,5 +15,5 @@ const Rank: {[K in Combination]: (cards: Card[]) => number} = {
 };
 
 export const calculateRank = (combination: Combination, cards: Card[]): number => {
-  return Rank[combination](cards);
+  return Rank[combination]?.(cards) ?? -Infinity;
 };

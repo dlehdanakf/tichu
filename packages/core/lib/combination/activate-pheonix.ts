@@ -7,7 +7,7 @@ import {calculateRank} from "./calculate-rank";
 export const activatePheonix = (cards: Card[]): Card[] => {
   const withoutPheonixCard = cards.filter((card) => card !== SpecialCard.Pheonix);
 
-  if (cards.includes(SpecialCard.Pheonix) === false) {
+  if (_.isLengthAtLeast(cards, 2) === false || cards.includes(SpecialCard.Pheonix) === false) {
     return cards;
   }
 
