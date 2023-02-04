@@ -1,21 +1,21 @@
-import {activatePheonix, calculateRank, Card, determineCombination, isValidCombination} from "@package/core";
-import {isSameLength, notNullish} from "./utils";
+import {calculateRank, determineCombination, isValidCombination} from "@package/core";
+import type {Card} from "@package/core";
+import {isSameLength, notNullish} from "@package/core/utils";
 
-export const battle = (defender: Card[], challenger: Card[]) => {
-  const pheonixActivatedChallenger = activatePheonix(challenger);
+export const battle = (
+  defender: Card[],
+  challenger: Card[],
+): {result: boolean; defender: Card[]; challenger: Card[]} => {
   const result = (() => {
-    const lengthValidation = isSameLength(defender, pheonixActivatedChallenger);
-    const combinationValidation = isValidCombination(pheonixActivatedChallenger);
+    const lengthValidation = isSameLength(defender, challenger);
+    const combinationValidation = isValidCombination(challenger);
 
     if (lengthValidation && combinationValidation) {
       const defenderCombination = determineCombination(defender);
-      const challengerCombination = determineCombination(pheonixActivatedChallenger);
+      const challengerCombination = determineCombination(challenger);
 
       const defenderRank = notNullish(calculateRank(defenderCombination, defender), 0.5);
-      const challengerRank = notNullish(
-        calculateRank(challengerCombination, pheonixActivatedChallenger),
-        defenderRank + 0.5,
-      );
+      const challengerRank = notNullish(calculateRank(challengerCombination, challenger), defenderRank + 0.5);
 
       return defenderCombination === challengerCombination && challengerRank > defenderRank;
     }
@@ -23,5 +23,5 @@ export const battle = (defender: Card[], challenger: Card[]) => {
     return false;
   })();
 
-  return {result, defender, challenger: pheonixActivatedChallenger};
+  return {result, defender, challenger};
 };

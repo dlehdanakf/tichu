@@ -1,17 +1,18 @@
-import {CardValue, CardShape, _} from "@package/core";
+import {CardValue, CardShape} from "@package/core";
 import type {Card} from "@package/core";
+import {isLength, isLengthAtLeast, isAllSame, isSplittedGroupSame, isIncreasing} from "@package/core/utils";
 import type {Combination} from "./types";
 
 // prettier-ignore
 const CheckCombination: {[K in Combination]: (cards: Card[]) => boolean} = {
-  leaf: (cards) => _.isLength(cards, 1),
-  pair: (cards) => _.isLength(cards, 2) && _.isAllSame(cards.map((card) => CardValue[card])),
-  consecutivePairs: (cards) => _.isLength(cards, 4) && _.isAllSame(cards.map((card) => CardValue[card]).sort((a, b) => a - b).slice(0, 2))&& _.isAllSame(cards.map((card) => CardValue[card]).sort((a, b) => a - b).slice(2)) && _.isIncreasing(cards.map((card) => CardValue[card]).sort((a, b) => a - b).slice(1, 3)),
-  triple: (cards) => _.isLength(cards, 3) && _.isAllSame(cards.map((card) => CardValue[card])),
-  fullHouse: (cards) => _.isLength(cards, 5) && (_.isSplittedGroupSame(cards.map((card) => CardValue[card]).sort((a, b) => a - b), 3) || _.isSplittedGroupSame(cards.map((card) => CardValue[card]).sort((a, b) => a - b), 2)),
-  straight: (cards) => _.isLengthAtLeast(cards, 5) && _.isIncreasing(cards.map((card) => CardValue[card]).sort((a, b) => a - b)),
-  squareBomb: (cards) => _.isLength(cards, 4) && _.isAllSame(cards.map((card) => CardValue[card])),
-  straightBomb: (cards) => _.isLengthAtLeast(cards, 5) && _.isIncreasing(cards.map((card) => CardValue[card]).sort((a, b) => a - b)) && _.isAllSame(cards.map((card) => CardShape[card])),
+  leaf: (cards) => isLength(cards, 1),
+  pair: (cards) => isLength(cards, 2) && isAllSame(cards.map((card) => CardValue[card])),
+  consecutivePairs: (cards) => isLength(cards, 4) && isAllSame(cards.map((card) => CardValue[card]).sort((a, b) => a - b).slice(0, 2))&& isAllSame(cards.map((card) => CardValue[card]).sort((a, b) => a - b).slice(2)) && isIncreasing(cards.map((card) => CardValue[card]).sort((a, b) => a - b).slice(1, 3)),
+  triple: (cards) => isLength(cards, 3) && isAllSame(cards.map((card) => CardValue[card])),
+  fullHouse: (cards) => isLength(cards, 5) && (isSplittedGroupSame(cards.map((card) => CardValue[card]).sort((a, b) => a - b), 3) || isSplittedGroupSame(cards.map((card) => CardValue[card]).sort((a, b) => a - b), 2)),
+  straight: (cards) => isLengthAtLeast(cards, 5) && isIncreasing(cards.map((card) => CardValue[card]).sort((a, b) => a - b)),
+  squareBomb: (cards) => isLength(cards, 4) && isAllSame(cards.map((card) => CardValue[card])),
+  straightBomb: (cards) => isLengthAtLeast(cards, 5) && isIncreasing(cards.map((card) => CardValue[card]).sort((a, b) => a - b)) && isAllSame(cards.map((card) => CardShape[card])),
 };
 
 const BombCombinations: Combination[] = ["straightBomb", "squareBomb"];

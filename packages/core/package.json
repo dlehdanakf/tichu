@@ -2,6 +2,14 @@
   "name": "@package/core",
   "packageManager": "yarn@3.4.1",
   "main": "./lib/index.ts",
+  "module": "./lib/index.ts",
+  "files": [
+    "utils"
+  ],
+  "exports": {
+    ".": "./lib/index.ts",
+    "./utils": "./lib/utils/index.ts"
+  },
   "scripts": {
     "start": "vitest --ui"
   },
@@ -11,6 +19,7 @@
   "devDependencies": {
     "@vitest/ui": "^0.28.4",
     "vite": "^4.1.1",
+    "vite-tsconfig-paths": "^4.0.5",
     "vitest": "^0.28.4"
   }
 }
