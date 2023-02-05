@@ -59,7 +59,7 @@ describe("Activate pheonix card properly", () => {
 
   testCases.forEach(({before, after}) => {
     it(`[${before.join(", ")}] must be [${after.join(", ")}]`, () => {
-      expect(activatePheonix(before).sort()).toEqual(after.sort());
+      expect(activatePheonix(before).slice().sort()).toEqual(after.slice().sort());
     });
   });
 });
