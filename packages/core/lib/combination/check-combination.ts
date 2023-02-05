@@ -2,6 +2,7 @@ import {CardValue, CardShape} from "@package/core";
 import type {Card} from "@package/core";
 import {isLength, isLengthAtLeast, isAllSame, isSplittedGroupSame, isIncreasing} from "@package/core/utils";
 import type {Combination} from "./types";
+import {Combinations, NormalCombinations} from "./variables";
 
 // prettier-ignore
 const CheckCombination: {[K in Combination]: (cards: Card[]) => boolean} = {
@@ -15,17 +16,14 @@ const CheckCombination: {[K in Combination]: (cards: Card[]) => boolean} = {
   straightBomb: (cards) => isLengthAtLeast(cards, 5) && isIncreasing(cards.map((card) => CardValue[card]).sort((a, b) => a - b)) && isAllSame(cards.map((card) => CardShape[card])),
 };
 
-const BombCombinations: Combination[] = ["straightBomb", "squareBomb"];
-const NormalCombinations: Combination[] = ["straight", "fullHouse", "triple", "consecutivePairs", "pair", "leaf"];
-
 export const isValidCombination = (cards: Card[], withoutBomb = false): boolean => {
-  const combinations: Combination[] = withoutBomb ? NormalCombinations : [...BombCombinations, ...NormalCombinations];
+  const combinations: Combination[] = withoutBomb ? NormalCombinations : Combinations;
 
   return combinations.map((key) => CheckCombination[key](cards)).some((result) => result === true);
 };
 
 export const determineCombination = (cards: Card[], withoutBomb = false): Combination | undefined => {
-  const combinations: Combination[] = withoutBomb ? NormalCombinations : [...BombCombinations, ...NormalCombinations];
+  const combinations: Combination[] = withoutBomb ? NormalCombinations : Combinations;
 
   const results = combinations.map((key) => CheckCombination[key](cards));
   const index = results.indexOf(true);

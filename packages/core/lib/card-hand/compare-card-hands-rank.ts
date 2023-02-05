@@ -1,9 +1,8 @@
 import {isSameLength} from "@package/core/utils";
+import {BombCombinations} from "@package/core";
 import type {Combination} from "@package/core";
 import {reduceCardHand} from "./reduce-card-hand";
 import type {CardHand} from "./types";
-
-const BombCombinations: Combination[] = ["squareBomb", "straightBomb"];
 
 const conditional = (condition: boolean, positive: boolean, negative: boolean) => {
   return condition ? positive : negative;
