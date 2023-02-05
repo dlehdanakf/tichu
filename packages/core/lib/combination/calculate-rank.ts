@@ -13,7 +13,7 @@ const Rank: {[K in Combination | 'undefined']: (cards: Card[]) => number} = {
   fullHouse: (cards) => ((values) => isSplittedGroupSame(values, 3) ? first(values, -Infinity) : last(values, -Infinity))(cards.map((card) => CardValue[card]).sort((a, b) => a - b)),
   straight: (cards) => last(cards.map((card) => CardValue[card]).sort((a, b) => a - b), -Infinity),
   squareBomb: (cards) => first(cards.map((card) => CardValue[card]), -Infinity) * 100,
-  straightBomb: (cards) => last(cards.map((card) => CardValue[card]).sort((a, b) => a - b), -Infinity) * 100,
+  straightBomb: (cards) => last(cards.map((card) => CardValue[card]).sort((a, b) => a - b), -Infinity) * 10000,
 };
 
 export const calculateRank = (combination: Combination | undefined, cards: Card[]): number => {
