@@ -81,7 +81,7 @@ describe("Build card hands correctly", () => {
     {
       cards: ["♠2", "♠3", "♠4", "♠5", "♠6"],
       combination: "straightBomb",
-      rank: 600,
+      rank: 60000,
     },
     {
       cards: [SpecialCard.Dragon, "♠5"],
@@ -193,7 +193,7 @@ describe("Reduce card hands correctly", () => {
       reduced: {
         cards: ["♠2", "♠3", "♠4", "♠5", "♠6"],
         combination: "straightBomb",
-        rank: 600,
+        rank: 60000,
       },
     },
     {
@@ -245,6 +245,11 @@ describe("Compare card hands rank correctly", () => {
     {
       prev: [buildCardHand(["♠2", "♠3", "♠4", "♠5", "♠6"])],
       next: buildCardHand(["♠A", "♣A", "♥A", "♦A"]),
+      result: false,
+    },
+    {
+      prev: [buildCardHand(["♠A", "♣A", "♥A", "♦A"])],
+      next: buildCardHand(["♠2", "♠3", "♠4", "♠5", "♠6"]),
       result: true,
     },
   ];

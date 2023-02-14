@@ -77,7 +77,7 @@ describe("Calculate rank score correctly", () => {
     },
     {
       combination: ["♠2", "♠3", "♠4", "♠5", "♠6"],
-      rank: 600,
+      rank: 60000,
     },
     {
       combination: ["♠2", "♠3", "♠4", "♠5", "♣6"],
