@@ -40,8 +40,8 @@ describe("Activate pheonix card properly", () => {
       after: ["♥2", "♦3", "♦4", "♥5", "♣6"],
     },
     {
-      before: [SpecialCard.Pheonix, "♥8", "♦9", "♦Q", "♥K"],
-      after: ["♥8", "♦9", "♣J", "♦Q", "♥K"],
+      before: [SpecialCard.Pheonix, "♥8", "♦9", "♦J", "♥Q"],
+      after: ["♥8", "♦9", "♣10", "♦J", "♥Q"],
     },
     {
       before: [SpecialCard.Pheonix, "♥7", "♦9", "♦Q", "♥K"],
@@ -53,7 +53,7 @@ describe("Activate pheonix card properly", () => {
     },
     {
       before: [SpecialCard.Pheonix, "♥6", "♥7", "♥8", "♥9"],
-      after: ["♥6", "♥7", "♥8", "♥9", "♣J"],
+      after: ["♥6", "♥7", "♥8", "♥9", "♣10"],
     },
   ];
 

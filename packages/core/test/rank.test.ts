@@ -25,7 +25,7 @@ describe("Calculate rank score correctly", () => {
     },
     {
       combination: ["♥A"],
-      rank: 13,
+      rank: 14,
     },
     {
       combination: ["♥4", "♣4"],
@@ -41,7 +41,7 @@ describe("Calculate rank score correctly", () => {
     },
     {
       combination: ["♥A", "♣A", "♦A"],
-      rank: 13,
+      rank: 14,
     },
     {
       combination: ["♠6", "♣6", "♥7", "♦7"],
@@ -64,8 +64,8 @@ describe("Calculate rank score correctly", () => {
       rank: 5,
     },
     {
-      combination: ["♠8", "♥9", "♠J", "♦Q", "♣K", "♠A"],
-      rank: 13,
+      combination: ["♠8", "♥9", "♥10", "♠J", "♦Q", "♣K", "♠A"],
+      rank: 14,
     },
     {
       combination: ["♠8", "♣8", "♥8", "♦8"],
@@ -73,7 +73,7 @@ describe("Calculate rank score correctly", () => {
     },
     {
       combination: ["♠A", "♣A", "♥A", "♦A"],
-      rank: 1300,
+      rank: 1400,
     },
     {
       combination: ["♠2", "♠3", "♠4", "♠5", "♠6"],

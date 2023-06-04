@@ -3,7 +3,7 @@ import type {Card} from "@package/core";
 
 describe("Determine cards shape correctly", () => {
   const shapes = ["♠", "♥", "♦", "♣"];
-  const numbers = ["2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K", "A"];
+  const numbers = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
   const specialCards = Object.values(SpecialCard);
 
   shapes.forEach((shape) => {
@@ -25,8 +25,8 @@ describe("Determine cards shape correctly", () => {
 
 describe("Determine cards value correctly", () => {
   const shapes = ["♠", "♥", "♦", "♣"];
-  const numbers = ["2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K", "A"];
-  const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+  const numbers = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+  const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
   const specialCards = Object.values(SpecialCard);
   const specialValues = [1, 0, NaN, Infinity];

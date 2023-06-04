@@ -36,7 +36,7 @@ describe("Build card hands correctly", () => {
     {
       cards: ["♣A"],
       combination: "leaf",
-      rank: 13,
+      rank: 14,
     },
     {
       cards: ["♠2", "♥2"],
@@ -69,9 +69,9 @@ describe("Build card hands correctly", () => {
       rank: 5,
     },
     {
-      cards: ["♠7", "♥8", "♣9", "♠J", "♥Q", "♠K"],
+      cards: ["♠8", "♥9", "♣10", "♠J", "♥Q", "♠K"],
       combination: "straight",
-      rank: 12,
+      rank: 13,
     },
     {
       cards: ["♠2", "♣2", "♥2", "♦2"],
@@ -137,7 +137,7 @@ describe("Reduce card hands correctly", () => {
       reduced: {
         cards: ["♥A"],
         combination: "leaf",
-        rank: 13,
+        rank: 14,
       },
     },
     {
@@ -153,7 +153,7 @@ describe("Reduce card hands correctly", () => {
       reduced: {
         cards: [SpecialCard.Pheonix],
         combination: "leaf",
-        rank: 13.5,
+        rank: 14.5,
       },
     },
     {
