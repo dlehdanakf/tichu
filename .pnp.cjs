@@ -303,7 +303,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/core/",\
           "packageDependencies": [\
             ["@package/core", "workspace:packages/core"],\
+            ["@types/lodash-es", "npm:4.17.7"],\
             ["@vitest/ui", "npm:0.28.4"],\
+            ["lodash-es", "npm:4.17.21"],\
             ["vite", "virtual:4cc0dec0b0a0b0e4e78e8a651151e51bffd70ce9b5962c95846d351aaf2b95e533826c6efde1714c55b83397fadf39223ea6c5d44ac5e82e37b30fb4dbabd5b5#npm:4.1.1"],\
             ["vite-tsconfig-paths", "virtual:4cc0dec0b0a0b0e4e78e8a651151e51bffd70ce9b5962c95846d351aaf2b95e533826c6efde1714c55b83397fadf39223ea6c5d44ac5e82e37b30fb4dbabd5b5#npm:4.0.5"],\
             ["vitest", "virtual:4cc0dec0b0a0b0e4e78e8a651151e51bffd70ce9b5962c95846d351aaf2b95e533826c6efde1714c55b83397fadf39223ea6c5d44ac5e82e37b30fb4dbabd5b5#npm:0.28.4"]\
@@ -344,6 +346,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/chai-subset", "npm:1.3.3"],\
             ["@types/chai", "npm:4.3.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/lodash", [\
+        ["npm:4.14.195", {\
+          "packageLocation": "./.yarn/cache/@types-lodash-npm-4.14.195-a2a8254638-39b75ca635.zip/node_modules/@types/lodash/",\
+          "packageDependencies": [\
+            ["@types/lodash", "npm:4.14.195"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/lodash-es", [\
+        ["npm:4.17.7", {\
+          "packageLocation": "./.yarn/cache/@types-lodash-es-npm-4.17.7-7322f70ff2-4b1f39fd1d.zip/node_modules/@types/lodash-es/",\
+          "packageDependencies": [\
+            ["@types/lodash-es", "npm:4.17.7"],\
+            ["@types/lodash", "npm:4.14.195"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1223,6 +1244,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/local-pkg-npm-0.4.3-de61dda1fd-7825aca531.zip/node_modules/local-pkg/",\
           "packageDependencies": [\
             ["local-pkg", "npm:0.4.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["lodash-es", [\
+        ["npm:4.17.21", {\
+          "packageLocation": "./.yarn/cache/lodash-es-npm-4.17.21-b45832dfce-05cbffad6e.zip/node_modules/lodash-es/",\
+          "packageDependencies": [\
+            ["lodash-es", "npm:4.17.21"]\
           ],\
           "linkType": "HARD"\
         }]\
