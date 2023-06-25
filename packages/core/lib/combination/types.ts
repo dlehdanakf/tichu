@@ -1,4 +1,4 @@
-export type Combination =
+export type Sequence =
   | "leaf"
   | "pair"
   | "consecutivePairs"

@@ -1,7 +1,7 @@
-import type {Card, Combination} from "@package/core";
+import type {Card, Sequence} from "@package/core";
 
 export type CardHand = {
   cards: Card[];
-  combination: Combination | undefined;
+  sequence: Sequence | undefined;
   rank: number;
 };

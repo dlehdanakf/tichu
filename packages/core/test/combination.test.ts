@@ -1,8 +1,8 @@
-import {Combination, isValidCombination, determineCombination, SpecialCard} from "@package/core";
+import {Sequence, isValidSequence, determineSequence, SpecialCard} from "@package/core";
 import type {Card} from "@package/core";
 
-describe("Validate cards combination correctly", () => {
-  const validCombinations: Card[][] = [
+describe("Validate cards sequence correctly", () => {
+  const validSequences: Card[][] = [
     ["1"],
     ["♥A"],
     [SpecialCard.Dragon],
@@ -27,7 +27,7 @@ describe("Validate cards combination correctly", () => {
     ["♥6", "♥7", "♥8", "♥9", "♥10", "♥J", "♥Q"],
     ["♥4", "♥5", "♥6", "♥7", "♥8", "♥9", "♥10", "♥J", "♥Q"],
   ];
-  const invalidCombination: Card[][] = [
+  const invalidSequence: Card[][] = [
     ["1", "♠2"],
     ["♠2", "♠3"],
     ["♥4", "♦4", "♣6", "♠6"],
@@ -48,21 +48,21 @@ describe("Validate cards combination correctly", () => {
     ["♠6", "♠7", "♦8", "♠9", "♠Q"],
   ];
 
-  validCombinations.forEach((combination) => {
-    it(`[${combination.join(", ")}] is valid combination`, () => {
-      expect(isValidCombination(combination)).toEqual(true);
+  validSequences.forEach((sequence) => {
+    it(`[${sequence.join(", ")}] is valid sequence`, () => {
+      expect(isValidSequence(sequence)).toEqual(true);
     });
   });
 
-  invalidCombination.forEach((combination) => {
-    it(`[${combination.join(", ")}] is invalid combination`, () => {
-      expect(isValidCombination(combination)).toEqual(false);
+  invalidSequence.forEach((sequence) => {
+    it(`[${sequence.join(", ")}] is invalid sequence`, () => {
+      expect(isValidSequence(sequence)).toEqual(false);
     });
   });
 });
 
-describe("Determine cards combination correctly", () => {
-  const combinations: {[K in Combination]: Card[][]} = {
+describe("Determine cards sequence correctly", () => {
+  const sequences: {[K in Sequence]: Card[][]} = {
     leaf: [["1"], [SpecialCard.Hound], [SpecialCard.Pheonix], [SpecialCard.Dragon], ["♠3"], ["♥Q"]],
     pair: [
       ["♠2", "♣2"],
@@ -101,10 +101,10 @@ describe("Determine cards combination correctly", () => {
     ],
   };
 
-  Object.entries(combinations).forEach(([name, combinations]) => {
-    combinations.forEach((combination) => {
-      it(`[${combination.join(", ")}] must be '${name}'`, () => {
-        expect(determineCombination(combination)).toEqual(name);
+  Object.entries(sequences).forEach(([name, sequences]) => {
+    sequences.forEach((sequence) => {
+      it(`[${sequence.join(", ")}] must be '${name}'`, () => {
+        expect(determineSequence(sequence)).toEqual(name);
       });
     });
   });

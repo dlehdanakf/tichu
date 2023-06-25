@@ -1,10 +1,10 @@
 import {CardValue} from "@package/core";
 import type {Card} from "@package/core";
 import {isSplittedGroupSame, first, last} from "@package/core/utils";
-import type {Combination} from "./types";
+import type {Sequence} from "./types";
 
 // prettier-ignore
-const Rank: {[K in Combination | 'undefined']: (cards: Card[]) => number} = {
+const Rank: {[K in Sequence | 'undefined']: (cards: Card[]) => number} = {
   undefined: () => -Infinity,
   leaf: (cards) => first(cards.map((card) => CardValue[card]), -Infinity),
   pair: (cards) => first(cards.map((card) => CardValue[card]), -Infinity),
@@ -16,6 +16,6 @@ const Rank: {[K in Combination | 'undefined']: (cards: Card[]) => number} = {
   straightBomb: (cards) => last(cards.map((card) => CardValue[card]).sort((a, b) => a - b), -Infinity) * 10000,
 };
 
-export const calculateRank = (combination: Combination | undefined, cards: Card[]): number => {
-  return Rank[combination ?? "undefined"](cards);
+export const calculateRank = (sequence: Sequence | undefined, cards: Card[]): number => {
+  return Rank[sequence ?? "undefined"](cards);
 };

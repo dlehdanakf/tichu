@@ -1,14 +1,14 @@
-import {calculateRank, determineCombination} from "@package/core";
+import {calculateRank, determineSequence} from "@package/core";
 import type {Card} from "@package/core";
 import type {CardHand} from "./types";
 
 export const buildCardHand = (cards: Card[]): CardHand => {
-  const combination = determineCombination(cards);
-  const rank = calculateRank(combination, cards);
+  const sequence = determineSequence(cards);
+  const rank = calculateRank(sequence, cards);
 
   return {
     cards,
-    combination,
+    sequence,
     rank,
   };
 };

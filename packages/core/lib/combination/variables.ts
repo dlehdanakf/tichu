@@ -1,14 +1,7 @@
-import type {Combination} from "./types";
+import type {Sequence} from "./types";
 
-export const BombCombinations: Combination[] = ["squareBomb", "straightBomb"];
+export const BombSequences: Sequence[] = ["squareBomb", "straightBomb"];
 
-export const NormalCombinations: Combination[] = [
-  "straight",
-  "fullHouse",
-  "triple",
-  "consecutivePairs",
-  "pair",
-  "leaf",
-];
+export const NormalSequences: Sequence[] = ["straight", "fullHouse", "triple", "consecutivePairs", "pair", "leaf"];
 
-export const Combinations: Combination[] = [...BombCombinations, ...NormalCombinations];
+export const Sequences: Sequence[] = [...BombSequences, ...NormalSequences];

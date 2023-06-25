@@ -5,102 +5,102 @@ describe("Build card hands correctly", () => {
   const testCases: CardHand[] = [
     {
       cards: [],
-      combination: undefined,
+      sequence: undefined,
       rank: -Infinity,
     },
     {
       cards: [SpecialCard.Hound],
-      combination: "leaf",
+      sequence: "leaf",
       rank: 0,
     },
     {
       cards: [SpecialCard.Wish],
-      combination: "leaf",
+      sequence: "leaf",
       rank: 1,
     },
     {
       cards: [SpecialCard.Pheonix],
-      combination: "leaf",
+      sequence: "leaf",
       rank: NaN,
     },
     {
       cards: [SpecialCard.Dragon],
-      combination: "leaf",
+      sequence: "leaf",
       rank: Infinity,
     },
     {
       cards: ["♠7"],
-      combination: "leaf",
+      sequence: "leaf",
       rank: 7,
     },
     {
       cards: ["♣A"],
-      combination: "leaf",
+      sequence: "leaf",
       rank: 14,
     },
     {
       cards: ["♠2", "♥2"],
-      combination: "pair",
+      sequence: "pair",
       rank: 2,
     },
     {
       cards: ["♠2", "♣2", "♠3", "♥3"],
-      combination: "consecutivePairs",
+      sequence: "consecutivePairs",
       rank: 3,
     },
     {
       cards: ["♠2", "♣2", "♥2"],
-      combination: "triple",
+      sequence: "triple",
       rank: 2,
     },
     {
       cards: ["♠2", "♣2", "♥2", "♠3", "♦3"],
-      combination: "fullHouse",
+      sequence: "fullHouse",
       rank: 2,
     },
     {
       cards: ["♠2", "♣2", "♥3", "♠3", "♦3"],
-      combination: "fullHouse",
+      sequence: "fullHouse",
       rank: 3,
     },
     {
       cards: [SpecialCard.Wish, "♥2", "♦3", "♠4", "♣5"],
-      combination: "straight",
+      sequence: "straight",
       rank: 5,
     },
     {
       cards: ["♠8", "♥9", "♣10", "♠J", "♥Q", "♠K"],
-      combination: "straight",
+      sequence: "straight",
       rank: 13,
     },
     {
       cards: ["♠2", "♣2", "♥2", "♦2"],
-      combination: "squareBomb",
+      sequence: "squareBomb",
       rank: 200,
     },
     {
       cards: ["♠2", "♠3", "♠4", "♠5", "♠6"],
-      combination: "straightBomb",
+      sequence: "straightBomb",
       rank: 60000,
     },
     {
       cards: [SpecialCard.Dragon, "♠5"],
-      combination: undefined,
+      sequence: undefined,
       rank: -Infinity,
     },
     {
       cards: ["1", "♠2", "♣3"],
-      combination: undefined,
+      sequence: undefined,
       rank: -Infinity,
     },
   ];
 
-  testCases.forEach(({cards, combination, rank}) => {
+  testCases.forEach(({cards, sequence, rank}) => {
     it(`Build card hand from [${cards.join(", ")}] cards correctly`, () => {
       const result = buildCardHand(cards);
 
       expect(result.cards.slice().sort()).toEqual(cards.slice().sort());
-      expect(result.combination).toEqual(combination);
+      expect(result.sequence).toEqual(sequence);
       expect(result.rank).toEqual(rank);
     });
   });
@@ -112,7 +112,7 @@ describe("Reduce card hands correctly", () => {
       target: [buildCardHand([SpecialCard.Wish])],
       reduced: {
         cards: [SpecialCard.Wish],
-        combination: "leaf",
+        sequence: "leaf",
         rank: 1,
       },
     },
@@ -120,7 +120,7 @@ describe("Reduce card hands correctly", () => {
       target: [buildCardHand([SpecialCard.Pheonix])],
       reduced: {
         cards: [SpecialCard.Pheonix],
-        combination: "leaf",
+        sequence: "leaf",
         rank: 0.5,
       },
     },
@@ -128,7 +128,7 @@ describe("Reduce card hands correctly", () => {
       target: [buildCardHand(["♠4"])],
       reduced: {
         cards: ["♠4"],
-        combination: "leaf",
+        sequence: "leaf",
         rank: 4,
       },
     },
@@ -136,7 +136,7 @@ describe("Reduce card hands correctly", () => {
       target: [buildCardHand(["♠4"]), buildCardHand(["♥A"])],
       reduced: {
         cards: ["♥A"],
-        combination: "leaf",
+        sequence: "leaf",
         rank: 14,
       },
     },
@@ -144,7 +144,7 @@ describe("Reduce card hands correctly", () => {
       target: [buildCardHand(["♠4"]), buildCardHand(["♥A"]), buildCardHand([SpecialCard.Dragon])],
       reduced: {
         cards: [SpecialCard.Dragon],
-        combination: "leaf",
+        sequence: "leaf",
         rank: Infinity,
       },
     },
@@ -152,7 +152,7 @@ describe("Reduce card hands correctly", () => {
       target: [buildCardHand(["♠4"]), buildCardHand(["♥A"]), buildCardHand([SpecialCard.Pheonix])],
       reduced: {
         cards: [SpecialCard.Pheonix],
-        combination: "leaf",
+        sequence: "leaf",
         rank: 14.5,
       },
     },
@@ -160,7 +160,7 @@ describe("Reduce card hands correctly", () => {
       target: [buildCardHand(["♥A"]), buildCardHand([SpecialCard.Dragon]), buildCardHand([SpecialCard.Pheonix])],
       reduced: {
         cards: [SpecialCard.Pheonix],
-        combination: "leaf",
+        sequence: "leaf",
         rank: Infinity,
       },
     },
@@ -168,7 +168,7 @@ describe("Reduce card hands correctly", () => {
       target: [buildCardHand(["♠4", "♥4"]), buildCardHand(["♥8", "♦8"])],
       reduced: {
         cards: ["♥8", "♦8"],
-        combination: "pair",
+        sequence: "pair",
         rank: 8,
       },
     },
@@ -176,7 +176,7 @@ describe("Reduce card hands correctly", () => {
       target: [buildCardHand(["♠4", "♥4", "♥4", "♠Q", "♥Q"]), buildCardHand(["♥8", "♦8", "♠8", "♠2", "♦2"])],
       reduced: {
         cards: ["♥8", "♦8", "♠8", "♠2", "♦2"],
-        combination: "fullHouse",
+        sequence: "fullHouse",
         rank: 8,
       },
     },
@@ -184,7 +184,7 @@ describe("Reduce card hands correctly", () => {
       target: [buildCardHand(["♠4", "♥4", "♥4", "♠Q", "♥Q"]), buildCardHand(["♥8", "♦8", "♠8", "♦8"])],
       reduced: {
         cards: ["♥8", "♦8", "♠8", "♦8"],
-        combination: "squareBomb",
+        sequence: "squareBomb",
         rank: 800,
       },
     },
@@ -192,7 +192,7 @@ describe("Reduce card hands correctly", () => {
       target: [buildCardHand(["♠4", "♥4", "♥4", "♠Q", "♥Q"]), buildCardHand(["♠2", "♠3", "♠4", "♠5", "♠6"])],
       reduced: {
         cards: ["♠2", "♠3", "♠4", "♠5", "♠6"],
-        combination: "straightBomb",
+        sequence: "straightBomb",
         rank: 60000,
       },
     },
@@ -200,7 +200,7 @@ describe("Reduce card hands correctly", () => {
       target: [buildCardHand(["♠2", "♠3", "♠4", "♠5", "♠6"]), buildCardHand(["♥8", "♦8", "♠8", "♦8"])],
       reduced: {
         cards: ["♥8", "♦8", "♠8", "♦8"],
-        combination: "squareBomb",
+        sequence: "squareBomb",
         rank: 800,
       },
     },
@@ -208,7 +208,7 @@ describe("Reduce card hands correctly", () => {
       target: [buildCardHand(["♠4"]), buildCardHand(["♠5", "♥5"])],
       reduced: {
         cards: ["♠5", "♥5"],
-        combination: undefined,
+        sequence: undefined,
         rank: 5,
       },
     },
@@ -222,7 +222,7 @@ describe("Reduce card hands correctly", () => {
       const result = reduceCardHand(target);
 
       expect(result.cards.slice().sort()).toEqual(reduced.cards.slice().sort());
-      expect(result.combination).toEqual(reduced.combination);
+      expect(result.sequence).toEqual(reduced.sequence);
       expect(result.rank).toEqual(reduced.rank);
     });
   });

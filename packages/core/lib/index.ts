@@ -1,3 +1,3 @@
 export * from "./card";
 export * from "./card-hand";
-export * from "./combination";
+export * from "./sequence";

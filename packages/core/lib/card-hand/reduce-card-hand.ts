@@ -1,6 +1,6 @@
 import type {CardHand} from "./types";
 
-const accumulateCombination = (acc: CardHand["combination"], cur: CardHand["combination"]): CardHand["combination"] => {
+const accumulateSequence = (acc: CardHand["sequence"], cur: CardHand["sequence"]): CardHand["sequence"] => {
   switch (true) {
     case cur === "squareBomb" || cur === "straightBomb":
       return cur;
@@ -15,12 +15,12 @@ export const reduceCardHand = ([firstHands, ...elseHands]: CardHand[]): CardHand
   return elseHands.reduce(
     (acc, cur) => ({
       cards: [...cur.cards],
-      combination: accumulateCombination(acc.combination, cur.combination),
+      sequence: accumulateSequence(acc.sequence, cur.sequence),
       rank: Number.isNaN(cur.rank) ? acc.rank + 0.5 : cur.rank,
     }),
     {
       cards: [...firstHands.cards],
-      combination: firstHands.combination,
+      sequence: firstHands.sequence,
       rank: Number.isNaN(firstHands.rank) ? 0.5 : firstHands.rank,
     },
   );

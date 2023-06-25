@@ -1,93 +1,93 @@
-import {calculateRank, determineCombination, SpecialCard} from "@package/core";
+import {calculateRank, determineSequence, SpecialCard} from "@package/core";
 import type {Card} from "@package/core";
 
 describe("Calculate rank score correctly", () => {
-  const testCases: {combination: Card[]; rank: number}[] = [
+  const testCases: {sequence: Card[]; rank: number}[] = [
     {
-      combination: [SpecialCard.Hound],
+      sequence: [SpecialCard.Hound],
       rank: 0,
     },
     {
-      combination: ["1"],
+      sequence: ["1"],
       rank: 1,
     },
     {
-      combination: [SpecialCard.Pheonix],
+      sequence: [SpecialCard.Pheonix],
       rank: NaN,
     },
     {
-      combination: [SpecialCard.Dragon],
+      sequence: [SpecialCard.Dragon],
       rank: Infinity,
     },
     {
-      combination: ["♥9"],
+      sequence: ["♥9"],
       rank: 9,
     },
     {
-      combination: ["♥A"],
+      sequence: ["♥A"],
       rank: 14,
     },
     {
-      combination: ["♥4", "♣4"],
+      sequence: ["♥4", "♣4"],
       rank: 4,
     },
     {
-      combination: ["♥3", "♣4"],
+      sequence: ["♥3", "♣4"],
       rank: -Infinity,
     },
     {
-      combination: ["♥3", "♣3", "♦3"],
+      sequence: ["♥3", "♣3", "♦3"],
       rank: 3,
     },
     {
-      combination: ["♥A", "♣A", "♦A"],
+      sequence: ["♥A", "♣A", "♦A"],
       rank: 14,
     },
     {
-      combination: ["♠6", "♣6", "♥7", "♦7"],
+      sequence: ["♠6", "♣6", "♥7", "♦7"],
       rank: 7,
     },
     {
-      combination: ["♠6", "♣6", "♥8", "♦8"],
+      sequence: ["♠6", "♣6", "♥8", "♦8"],
       rank: -Infinity,
     },
     {
-      combination: ["♠2", "♣2", "♥2", "♥3", "♦3"],
+      sequence: ["♠2", "♣2", "♥2", "♥3", "♦3"],
       rank: 2,
     },
     {
-      combination: ["♠2", "♣2", "♥3", "♥3", "♦3"],
+      sequence: ["♠2", "♣2", "♥3", "♥3", "♦3"],
       rank: 3,
     },
     {
-      combination: ["1", "♠2", "♥3", "♥4", "♥5"],
+      sequence: ["1", "♠2", "♥3", "♥4", "♥5"],
       rank: 5,
     },
     {
-      combination: ["♠8", "♥9", "♥10", "♠J", "♦Q", "♣K", "♠A"],
+      sequence: ["♠8", "♥9", "♥10", "♠J", "♦Q", "♣K", "♠A"],
       rank: 14,
     },
     {
-      combination: ["♠8", "♣8", "♥8", "♦8"],
+      sequence: ["♠8", "♣8", "♥8", "♦8"],
       rank: 800,
     },
     {
-      combination: ["♠A", "♣A", "♥A", "♦A"],
+      sequence: ["♠A", "♣A", "♥A", "♦A"],
       rank: 1400,
     },
     {
-      combination: ["♠2", "♠3", "♠4", "♠5", "♠6"],
+      sequence: ["♠2", "♠3", "♠4", "♠5", "♠6"],
       rank: 60000,
     },
     {
-      combination: ["♠2", "♠3", "♠4", "♠5", "♣6"],
+      sequence: ["♠2", "♠3", "♠4", "♠5", "♣6"],
       rank: 6,
     },
   ];
 
-  testCases.forEach(({combination, rank}) => {
-    it(`[${combination.join(", ")}] rank score must be {${rank}}`, () => {
-      expect(calculateRank(determineCombination(combination), combination)).toEqual(rank);
+  testCases.forEach(({sequence, rank}) => {
+    it(`[${sequence.join(", ")}] rank score must be {${rank}}`, () => {
+      expect(calculateRank(determineSequence(sequence), sequence)).toEqual(rank);
     });
   });
 });

@@ -1,7 +1,7 @@
 import {SpecialCard, PheonixReplaceableCards} from "@package/core";
 import type {Card} from "@package/core";
 import {isLengthAtLeast, last} from "@package/core/utils";
-import {isValidCombination, determineCombination} from "./check-combination";
+import {isValidSequence, determineSequence} from "./check-sequence";
 import {calculateRank} from "./calculate-rank";
 
 export const activatePheonix = (cards: Card[]): Card[] => {
@@ -13,8 +13,8 @@ export const activatePheonix = (cards: Card[]): Card[] => {
 
   return last(
     PheonixReplaceableCards.map((card) => [...withoutPheonixCard, card])
-      .filter((cards) => isValidCombination(cards, true))
-      .map((cards) => ({cards, rank: calculateRank(determineCombination(cards, true), cards)}))
+      .filter((cards) => isValidSequence(cards, true))
+      .map((cards) => ({cards, rank: calculateRank(determineSequence(cards, true), cards)}))
       .sort(({rank: a}, {rank: b}) => a - b)
       .map(({cards}) => cards),
     cards,

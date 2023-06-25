@@ -1,6 +1,6 @@
 import {isSameLength} from "@package/core/utils";
-import {BombCombinations} from "@package/core";
-import type {Combination} from "@package/core";
+import {BombSequences} from "@package/core";
+import type {Sequence} from "@package/core";
 import {reduceCardHand} from "./reduce-card-hand";
 import type {CardHand} from "./types";
 
@@ -8,8 +8,8 @@ const conditional = (condition: boolean, positive: boolean, negative: boolean) =
   return condition ? positive : negative;
 };
 
-const isBombCombination = (combination: Combination | undefined) => {
-  return BombCombinations.includes(combination as Combination);
+const isBombSequence = (sequence: Sequence | undefined) => {
+  return BombSequences.includes(sequence as Sequence);
 };
 
 const calibratePheonixRank = (nextRank: number, prevRank: number) => {
@@ -21,24 +21,24 @@ export const compareCardHandsRank = (previousCardHands: CardHand[], nextCardHand
     return true;
   }
 
-  const {cards: prevCards, combination: prevCombination, rank: prevRank} = reduceCardHand(previousCardHands);
-  const {cards: nextCards, combination: nextCombination, rank: nextRank} = nextCardHand;
+  const {cards: prevCards, sequence: prevSequence, rank: prevRank} = reduceCardHand(previousCardHands);
+  const {cards: nextCards, sequence: nextSequence, rank: nextRank} = nextCardHand;
 
   return [
-    // Both combination must be non-undefined value
-    [nextCombination, prevCombination].every((combination) => combination !== undefined),
+    // Both sequence must be non-undefined value
+    [nextSequence, prevSequence].every((sequence) => sequence !== undefined),
 
-    // Unconditionally true if `nextCombination` is bomb,
-    // otherwise it must be the same combination
-    conditional(isBombCombination(nextCombination), true, nextCombination === prevCombination),
+    // Unconditionally true if `nextSequence` is bomb,
+    // otherwise it must be the same sequence
+    conditional(isBombSequence(nextSequence), true, nextSequence === prevSequence),
 
-    // Unconditionally true if `nextCombination` is bomb,
+    // Unconditionally true if `nextSequence` is bomb,
     // otherwise it must have the same card count
-    conditional(isBombCombination(nextCombination), true, isSameLength(nextCards, prevCards)),
+    conditional(isBombSequence(nextSequence), true, isSameLength(nextCards, prevCards)),
 
     // `nextRank` must be bigger than `prevRank`
     conditional(
-      isBombCombination(nextCombination),
+      isBombSequence(nextSequence),
       conditional(Number.isFinite(prevRank), nextRank > prevRank, true),
       calibratePheonixRank(nextRank, prevRank) > prevRank,
     ),
