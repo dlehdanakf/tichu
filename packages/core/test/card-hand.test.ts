@@ -9,7 +9,7 @@ describe("Build card hands correctly", () => {
       rank: -Infinity,
     },
     {
-      cards: [SpecialCard.Dog],
+      cards: [SpecialCard.Hound],
       combination: "leaf",
       rank: 0,
     },
@@ -230,7 +230,7 @@ describe("Reduce card hands correctly", () => {
 
 describe("Compare card hands rank correctly", () => {
   const testCases: {prev: CardHand[]; next: CardHand; result: boolean}[] = [
-    {prev: [], next: buildCardHand([SpecialCard.Dog]), result: true},
+    {prev: [], next: buildCardHand([SpecialCard.Hound]), result: true},
     {prev: [buildCardHand([SpecialCard.Pheonix])], next: buildCardHand([SpecialCard.MahJong]), result: true},
     {prev: [buildCardHand([SpecialCard.MahJong])], next: buildCardHand(["♠2"]), result: true},
     {prev: [buildCardHand(["♥A"])], next: buildCardHand([SpecialCard.Pheonix]), result: true},

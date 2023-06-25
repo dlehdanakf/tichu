@@ -6,7 +6,7 @@ describe("Validate cards combination correctly", () => {
     ["1"],
     ["♥A"],
     [SpecialCard.Dragon],
-    [SpecialCard.Dog],
+    [SpecialCard.Hound],
     ["♠2", "♣2"],
     ["♠2", "♣2", "♠3", "♥3"],
     ["♠10", "♦10", "♣J", "♠J"],
@@ -32,14 +32,14 @@ describe("Validate cards combination correctly", () => {
     ["♠2", "♠3"],
     ["♥4", "♦4", "♣6", "♠6"],
     ["♥J", "♦J", "♣A", "♠A"],
-    ["♣2", SpecialCard.Dog],
+    ["♣2", SpecialCard.Hound],
     ["♠4", "♠5", "♠6"],
     ["♣9", "♥J", "♥Q"],
     ["♠8", "♣8", "♥8", "♠9", "♥9", "♦9"],
     ["1", "♣2", "♥3", "♥4"],
     ["♠8", "♠8", SpecialCard.Dragon],
     ["♠4", "♠5", "♠6", SpecialCard.Dragon],
-    ["♠4", "♠5", "♠6", SpecialCard.Dog],
+    ["♠4", "♠5", "♠6", SpecialCard.Hound],
     ["♠9", "♠J", "♠Q", "♠K"],
     [SpecialCard.Pheonix, "♥8", "♦8", "♠8"],
     ["♣2", "♦2", "♠7", "♥7", "♣8"],
@@ -63,7 +63,7 @@ describe("Validate cards combination correctly", () => {
 
 describe("Determine cards combination correctly", () => {
   const combinations: {[K in Combination]: Card[][]} = {
-    leaf: [["1"], [SpecialCard.Dog], [SpecialCard.Pheonix], [SpecialCard.Dragon], ["♠3"], ["♥Q"]],
+    leaf: [["1"], [SpecialCard.Hound], [SpecialCard.Pheonix], [SpecialCard.Dragon], ["♠3"], ["♥Q"]],
     pair: [
       ["♠2", "♣2"],
       ["♠A", "♣A"],

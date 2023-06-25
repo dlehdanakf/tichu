@@ -4,7 +4,7 @@ import type {Card} from "@package/core";
 describe("Calculate rank score correctly", () => {
   const testCases: {combination: Card[]; rank: number}[] = [
     {
-      combination: [SpecialCard.Dog],
+      combination: [SpecialCard.Hound],
       rank: 0,
     },
     {

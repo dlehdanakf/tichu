@@ -55,7 +55,7 @@ export const CardValue: {[K in Card]: number} = {
   "♣K": 13,
   "♣A": 14,
   [SpecialCard.MahJong]: 1,
-  [SpecialCard.Dog]: 0,
+  [SpecialCard.Hound]: 0,
   [SpecialCard.Pheonix]: NaN,
   [SpecialCard.Dragon]: Infinity,
 };

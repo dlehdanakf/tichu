@@ -55,7 +55,7 @@ export const CardShape: {[K in Card]: Shape | ""} = {
   "♣K": "♣",
   "♣A": "♣",
   [SpecialCard.MahJong]: "",
-  [SpecialCard.Dog]: "",
+  [SpecialCard.Hound]: "",
   [SpecialCard.Pheonix]: "",
   [SpecialCard.Dragon]: "",
 };
