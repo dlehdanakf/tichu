@@ -258,7 +258,7 @@ describe("Compare card hands rank correctly", () => {
     const before = `[[${prev.map(({cards}) => cards.join(", ")).join("], [")}]]`;
     const after = `[${next.cards.join(", ")}]`;
 
-    it(`${after} ${result ? "can" : "cannot"} present after ${before}`, () => {
+    it(`${after} ${result ? "can" : "cannot"} beat ${before}`, () => {
       expect(compareCardHandsRank(prev, next)).toEqual(result);
     });
   });
