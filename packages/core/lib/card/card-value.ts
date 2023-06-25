@@ -54,7 +54,7 @@ export const CardValue: {[K in Card]: number} = {
   "♣Q": 12,
   "♣K": 13,
   "♣A": 14,
-  [SpecialCard.MahJong]: 1,
+  [SpecialCard.Wish]: 1,
   [SpecialCard.Hound]: 0,
   [SpecialCard.Pheonix]: NaN,
   [SpecialCard.Dragon]: Infinity,

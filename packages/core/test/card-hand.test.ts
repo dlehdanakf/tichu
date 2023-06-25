@@ -14,7 +14,7 @@ describe("Build card hands correctly", () => {
       rank: 0,
     },
     {
-      cards: [SpecialCard.MahJong],
+      cards: [SpecialCard.Wish],
       combination: "leaf",
       rank: 1,
     },
@@ -64,7 +64,7 @@ describe("Build card hands correctly", () => {
       rank: 3,
     },
     {
-      cards: [SpecialCard.MahJong, "♥2", "♦3", "♠4", "♣5"],
+      cards: [SpecialCard.Wish, "♥2", "♦3", "♠4", "♣5"],
       combination: "straight",
       rank: 5,
     },
@@ -109,9 +109,9 @@ describe("Build card hands correctly", () => {
 describe("Reduce card hands correctly", () => {
   const testCases: {target: CardHand[]; reduced: CardHand}[] = [
     {
-      target: [buildCardHand([SpecialCard.MahJong])],
+      target: [buildCardHand([SpecialCard.Wish])],
       reduced: {
-        cards: [SpecialCard.MahJong],
+        cards: [SpecialCard.Wish],
         combination: "leaf",
         rank: 1,
       },
@@ -231,8 +231,8 @@ describe("Reduce card hands correctly", () => {
 describe("Compare card hands rank correctly", () => {
   const testCases: {prev: CardHand[]; next: CardHand; result: boolean}[] = [
     {prev: [], next: buildCardHand([SpecialCard.Hound]), result: true},
-    {prev: [buildCardHand([SpecialCard.Pheonix])], next: buildCardHand([SpecialCard.MahJong]), result: true},
-    {prev: [buildCardHand([SpecialCard.MahJong])], next: buildCardHand(["♠2"]), result: true},
+    {prev: [buildCardHand([SpecialCard.Pheonix])], next: buildCardHand([SpecialCard.Wish]), result: true},
+    {prev: [buildCardHand([SpecialCard.Wish])], next: buildCardHand(["♠2"]), result: true},
     {prev: [buildCardHand(["♥A"])], next: buildCardHand([SpecialCard.Pheonix]), result: true},
     {prev: [buildCardHand([SpecialCard.Dragon])], next: buildCardHand([SpecialCard.Pheonix]), result: false},
     {prev: [buildCardHand([SpecialCard.Dragon])], next: buildCardHand(["♥A"]), result: false},

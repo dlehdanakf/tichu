@@ -1,12 +1,12 @@
-import type {Hound, Pheonix, Dragon, MahJong} from "./types";
+import type {Hound, Pheonix, Dragon, Wish} from "./types";
 
 export const SpecialCard: {
-  MahJong: MahJong;
+  Wish: Wish;
   Hound: Hound;
   Pheonix: Pheonix;
   Dragon: Dragon;
 } = {
-  MahJong: "1",
+  Wish: "1",
   Hound: "犬",
   Pheonix: "鳥",
   Dragon: "龍",
